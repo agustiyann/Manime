@@ -1,9 +1,12 @@
 package com.masscode.manime.data
 
-import androidx.lifecycle.LiveData
 import com.masscode.manime.data.source.remote.response.AnimeListResponse
 
 interface DataSource {
 
-    suspend fun getAnimeAiring(): LiveData<List<AnimeListResponse>>
+    suspend fun getAnimeAiring(): List<AnimeListResponse>
+
+    suspend fun getAnimeUpcoming(): List<AnimeListResponse>
+
+    suspend fun getAnimeTV(): List<AnimeListResponse>
 }

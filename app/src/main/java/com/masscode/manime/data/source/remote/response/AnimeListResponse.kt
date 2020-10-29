@@ -9,6 +9,10 @@ data class AnimeListResponse(
     val title: String? = "",
     @Json(name = "image_url")
     val imageUrl: String? = "",
+    @Json(name = "type")
+    val type: String? = "",
+    @Json(name = "episodes")
+    val episodes: Int? = 0,
     @Json(name = "score")
     val score: Double? = 0.0
 )

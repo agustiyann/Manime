@@ -1,7 +1,5 @@
 package com.masscode.manime.data
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.masscode.manime.data.source.remote.RemoteDataSource
 import com.masscode.manime.data.source.remote.response.AnimeListResponse
 
@@ -16,11 +14,31 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
             }
     }
 
-    override suspend fun getAnimeAiring(): LiveData<List<AnimeListResponse>> {
-        val animeResult = MutableLiveData<List<AnimeListResponse>>()
-        remoteDataSource.getAnimeAiring(object : RemoteDataSource.GetAnimeAiringCallback {
+    override suspend fun getAnimeAiring(): List<AnimeListResponse> {
+        lateinit var animeResult: List<AnimeListResponse>
+        remoteDataSource.getAnimeAiring(object : RemoteDataSource.GetAnimeCallback {
             override fun onAnimeReceived(animeList: List<AnimeListResponse>) {
-                animeResult.postValue(animeList)
+                animeResult = animeList
+            }
+        })
+        return animeResult
+    }
+
+    override suspend fun getAnimeUpcoming(): List<AnimeListResponse> {
+        lateinit var animeResult: List<AnimeListResponse>
+        remoteDataSource.getAnimeUpcoming(object : RemoteDataSource.GetAnimeCallback {
+            override fun onAnimeReceived(animeList: List<AnimeListResponse>) {
+                animeResult = animeList
+            }
+        })
+        return animeResult
+    }
+
+    override suspend fun getAnimeTV(): List<AnimeListResponse> {
+        lateinit var animeResult: List<AnimeListResponse>
+        remoteDataSource.getAnimeTV(object : RemoteDataSource.GetAnimeCallback {
+            override fun onAnimeReceived(animeList: List<AnimeListResponse>) {
+                animeResult = animeList
             }
         })
         return animeResult

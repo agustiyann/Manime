@@ -12,7 +12,7 @@ object ApiConfig {
 
     init {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.jikan.moe/v3")
+            .baseUrl("https://api.jikan.moe/v3/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
         api = retrofit.create(ApiServices::class.java)
