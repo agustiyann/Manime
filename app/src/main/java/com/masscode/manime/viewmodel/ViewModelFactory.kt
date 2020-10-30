@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.masscode.manime.data.Repository
 import com.masscode.manime.di.Injection
 import com.masscode.manime.views.home.HomeViewModel
+import com.masscode.manime.views.more.MoreViewModel
 
 class ViewModelFactory private constructor(private val repository: Repository) : ViewModelProvider.NewInstanceFactory() {
 
@@ -23,6 +24,9 @@ class ViewModelFactory private constructor(private val repository: Repository) :
         return when {
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(MoreViewModel::class.java) -> {
+                MoreViewModel(repository) as T
             }
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }

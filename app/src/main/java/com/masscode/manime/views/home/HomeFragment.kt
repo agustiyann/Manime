@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.masscode.manime.databinding.FragmentHomeBinding
 import com.masscode.manime.viewmodel.ViewModelFactory
 
@@ -53,5 +54,13 @@ class HomeFragment : Fragment() {
             setHasFixedSize(true)
             adapter = adapterTV
         }
+
+        binding.moreAiring.setOnClickListener { showMore("airing") }
+        binding.moreUpcoming.setOnClickListener { showMore("upcoming") }
+        binding.moreTv.setOnClickListener { showMore("tv") }
+    }
+
+    private fun showMore(type: String) {
+        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToMoreFragment(type))
     }
 }

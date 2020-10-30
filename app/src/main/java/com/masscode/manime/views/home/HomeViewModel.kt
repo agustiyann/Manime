@@ -30,13 +30,13 @@ class HomeViewModel(private val repository: Repository) : ViewModel() {
     init {
         coroutineScope.launch {
             try {
-                val resultAiring = repository.getAnimeAiring()
+                val resultAiring = repository.getTopAnime("airing")
                 _animeAiring.value = resultAiring
 
-                val resultUpcoming = repository.getAnimeUpcoming()
+                val resultUpcoming = repository.getTopAnime("upcoming")
                 _animeUpcoming.value = resultUpcoming
 
-                val resultTV = repository.getAnimeTV()
+                val resultTV = repository.getTopAnime("tv")
                 _animeTV.value = resultTV
             } catch (e: Throwable) {
                 e.printStackTrace()

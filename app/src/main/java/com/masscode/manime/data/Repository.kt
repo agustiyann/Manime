@@ -14,29 +14,9 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
             }
     }
 
-    override suspend fun getAnimeAiring(): List<AnimeListResponse> {
+    override suspend fun getTopAnime(type: String): List<AnimeListResponse> {
         lateinit var animeResult: List<AnimeListResponse>
-        remoteDataSource.getAnimeAiring(object : RemoteDataSource.GetAnimeCallback {
-            override fun onAnimeReceived(animeList: List<AnimeListResponse>) {
-                animeResult = animeList
-            }
-        })
-        return animeResult
-    }
-
-    override suspend fun getAnimeUpcoming(): List<AnimeListResponse> {
-        lateinit var animeResult: List<AnimeListResponse>
-        remoteDataSource.getAnimeUpcoming(object : RemoteDataSource.GetAnimeCallback {
-            override fun onAnimeReceived(animeList: List<AnimeListResponse>) {
-                animeResult = animeList
-            }
-        })
-        return animeResult
-    }
-
-    override suspend fun getAnimeTV(): List<AnimeListResponse> {
-        lateinit var animeResult: List<AnimeListResponse>
-        remoteDataSource.getAnimeTV(object : RemoteDataSource.GetAnimeCallback {
+        remoteDataSource.getTopAnime(type, object : RemoteDataSource.GetAnimeCallback {
             override fun onAnimeReceived(animeList: List<AnimeListResponse>) {
                 animeResult = animeList
             }

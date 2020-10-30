@@ -15,23 +15,9 @@ class RemoteDataSource private constructor(private val apiConfig: ApiConfig) {
         }
     }
 
-    suspend fun getAnimeAiring(callback: GetAnimeCallback) {
+    suspend fun getTopAnime(type: String, callback: GetAnimeCallback) {
         withContext(Dispatchers.IO) {
-            val animes = apiConfig.api.getAnimeAiring().top
-            callback.onAnimeReceived(animes)
-        }
-    }
-
-    suspend fun getAnimeUpcoming(callback: GetAnimeCallback) {
-        withContext(Dispatchers.IO) {
-            val animes = apiConfig.api.getAnimeUpcoming().top
-            callback.onAnimeReceived(animes)
-        }
-    }
-
-    suspend fun getAnimeTV(callback: GetAnimeCallback) {
-        withContext(Dispatchers.IO) {
-            val animes = apiConfig.api.getAnimeTV().top
+            val animes = apiConfig.api.getTopAnime(type).top
             callback.onAnimeReceived(animes)
         }
     }
@@ -39,10 +25,4 @@ class RemoteDataSource private constructor(private val apiConfig: ApiConfig) {
     interface GetAnimeCallback {
         fun onAnimeReceived(animeList: List<AnimeListResponse>)
     }
-
-//    interface GetAnimeUpcomingCallback {
-//        fun onAnimeReceived(animeList: List<AnimeListResponse>)
-//    }
-//
-//    interface GetAnimeTVCallback {}
 }
