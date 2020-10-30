@@ -20,8 +20,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="210dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="8dp">
+            app:cardCornerRadius="10dp">
 
             <ImageView
                 android:id="@+id/poster_image"
