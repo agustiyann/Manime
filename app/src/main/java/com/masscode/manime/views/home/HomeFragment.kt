@@ -32,14 +32,39 @@ class HomeFragment : Fragment() {
         val adapterUpcoming = HomeAdapter()
         val adapterTV = HomeAdapter()
 
+        binding.topAiringText.visibility = View.GONE
+        binding.upcomingText.visibility = View.GONE
+        binding.tvText.visibility = View.GONE
+        binding.moreAiring.visibility = View.GONE
+        binding.moreUpcoming.visibility = View.GONE
+        binding.moreTv.visibility = View.GONE
+
+        binding.progressViewAiring.visibility = View.VISIBLE
+        binding.progressViewUpcoming.visibility = View.VISIBLE
+        binding.progressViewTv.visibility = View.VISIBLE
         viewModel.animeAiring.observe(viewLifecycleOwner, { anime ->
-            adapterAiring.setData(anime)
+            if (anime != null) {
+                adapterAiring.setData(anime)
+                binding.progressViewAiring.visibility = View.GONE
+                binding.topAiringText.visibility = View.VISIBLE
+                binding.moreAiring.visibility = View.VISIBLE
+            }
         })
         viewModel.animeUpcoming.observe(viewLifecycleOwner, { anime ->
-            adapterUpcoming.setData(anime)
+            if (anime != null) {
+                adapterUpcoming.setData(anime)
+                binding.progressViewUpcoming.visibility = View.GONE
+                binding.upcomingText.visibility = View.VISIBLE
+                binding.moreUpcoming.visibility = View.VISIBLE
+            }
         })
         viewModel.animeTV.observe(viewLifecycleOwner, { anime ->
-            adapterTV.setData(anime)
+            if (anime != null) {
+                adapterTV.setData(anime)
+                binding.progressViewTv.visibility = View.GONE
+                binding.tvText.visibility = View.VISIBLE
+                binding.moreTv.visibility = View.VISIBLE
+            }
         })
 
         with(binding.rvTopAiring) {

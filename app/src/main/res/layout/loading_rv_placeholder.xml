@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/top_airing_text"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="#DDDDDD"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/more_airing"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="#DDDDDD"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="@+id/top_airing_text"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:scrollbars="none"
+        android:paddingHorizontal="8dp"
+        android:clipToPadding="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_airing_text">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <include
+                android:layout_width="150dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_height="wrap_content"
+                layout="@layout/item_list_placeholder" />
+            <include
+                android:layout_width="150dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_height="wrap_content"
+                layout="@layout/item_list_placeholder" />
+            <include
+                android:layout_width="150dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_height="wrap_content"
+                layout="@layout/item_list_placeholder" />
+            <include
+                android:layout_width="150dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_height="wrap_content"
+                layout="@layout/item_list_placeholder" />
+            <include
+                android:layout_width="150dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_height="wrap_content"
+                layout="@layout/item_list_placeholder" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

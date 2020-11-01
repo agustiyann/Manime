@@ -7,6 +7,8 @@ buildscript {
     ext.moshi_version = "1.9.3"
     ext.room_version = "2.2.5"
     ext.nav_version = "2.3.1"
+    ext.lottie_version = "3.4.2"
+    ext.shimmer_version = "0.5.0"
     repositories {
         google()
         jcenter()
