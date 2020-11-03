@@ -13,4 +13,13 @@
         <item name="android:statusBarColor" tools:targetApi="l">#2d3436</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <!-- Customize color of Toolbar -->
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+    <style name="ElectroHarmonixFont">
+        <item name="android:fontFamily">@font/electroharmonix</item>
+    </style>
 </resources>

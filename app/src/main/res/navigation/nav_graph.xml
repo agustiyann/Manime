@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.masscode.manime.views.home.HomeFragment"
-        android:label="fragment_home"
+        android:label="Top Anime"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_moreFragment"
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/moreFragment"
         android:name="com.masscode.manime.views.more.MoreFragment"
-        android:label="MoreFragment"
+        android:label="More"
         tools:layout="@layout/fragment_more">
         <argument
             android:name="type"
@@ -32,8 +32,8 @@
     <fragment
         android:id="@+id/detailAnimeFragment"
         android:name="com.masscode.manime.views.detail.DetailAnimeFragment"
-        android:label="DetailAnimeFragment"
-        tools:layout="@layout/fragment_detail_anime" >
+        android:label="Detail"
+        tools:layout="@layout/fragment_detail_anime">
         <argument
             android:name="id"
             app:argType="integer" />
