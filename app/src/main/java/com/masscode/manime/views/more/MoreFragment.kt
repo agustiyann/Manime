@@ -32,8 +32,12 @@ class MoreFragment : Fragment() {
         val type = MoreFragmentArgs.fromBundle(requireArguments()).type
 
         viewModel.setType(type)
+        binding.loading.visibility = View.VISIBLE
         viewModel.animeAiring.observe(viewLifecycleOwner, { anime ->
-            adapterAiring.setData(anime)
+            if (anime != null) {
+                adapterAiring.setData(anime)
+                binding.loading.visibility = View.GONE
+            }
         })
 
         with(binding.rvAnimeMore) {
