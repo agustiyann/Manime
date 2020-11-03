@@ -19,7 +19,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="16dp"
             tools:context=".views.detail.DetailAnimeFragment">
 
             <ImageView
@@ -38,6 +37,7 @@
                 android:layout_marginTop="240dp"
                 android:background="@drawable/bg_detail_anime"
                 android:orientation="vertical"
+                android:paddingBottom="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">

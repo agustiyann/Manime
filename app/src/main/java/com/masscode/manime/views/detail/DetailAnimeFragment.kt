@@ -13,7 +13,6 @@ import com.masscode.manime.R
 import com.masscode.manime.databinding.FragmentDetailAnimeBinding
 import com.masscode.manime.viewmodel.ViewModelFactory
 
-
 class DetailAnimeFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailAnimeBinding

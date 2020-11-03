@@ -50,8 +50,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    implementation 'jp.wasabeef:glide-transformations:4.2.0'
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    implementation "jp.wasabeef:glide-transformations:$glide_transformations_version"
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
@@ -64,4 +64,5 @@ dependencies {
     implementation "com.airbnb.android:lottie:$lottie_version"
     implementation "com.facebook.shimmer:shimmer:$shimmer_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
+    implementation "androidx.palette:palette-ktx:$palette_version"
 }
