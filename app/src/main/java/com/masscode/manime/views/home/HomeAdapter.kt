@@ -8,7 +8,8 @@ import com.masscode.manime.R
 import com.masscode.manime.data.source.remote.response.AnimeListResponse
 import com.masscode.manime.databinding.ItemAnimeListBinding
 
-class HomeAdapter : RecyclerView.Adapter<HomeAdapter.AnimeViewHolder>() {
+class HomeAdapter(private val showDetail: (id: Int) -> Unit) :
+    RecyclerView.Adapter<HomeAdapter.AnimeViewHolder>() {
 
     private var listData = ArrayList<AnimeListResponse>()
     private val limit: Int = 10
@@ -50,6 +51,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.AnimeViewHolder>() {
         fun bind(animeListResponse: AnimeListResponse) {
             binding.anime = animeListResponse
             binding.executePendingBindings()
+            binding.root.setOnClickListener { animeListResponse.id?.let { it1 -> showDetail(it1) } }
         }
     }
 }

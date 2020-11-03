@@ -8,4 +8,10 @@
     <string name="more">More</string>
     <string name="top_upcoming">Upcoming</string>
     <string name="tv">TV</string>
+    <string name="backdrop_image">Backdrop Image</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea eaque earum error minima qui quidem sunt, tempore veritatis vero vitae? Delectus, eveniet facere facilis laborum modi natus necessitatibus nihil odit provident repellendus repudiandae sequi temporibus?</string>
+    <string name="genres">Genres</string>
+    <string name="popularity">Popularity</string>
+    <string name="members">Members</string>
 </resources>

@@ -2,6 +2,7 @@ package com.masscode.manime.data
 
 import com.masscode.manime.data.source.remote.RemoteDataSource
 import com.masscode.manime.data.source.remote.response.AnimeListResponse
+import com.masscode.manime.data.source.remote.response.DetailAnimeResponse
 
 class Repository private constructor(private val remoteDataSource: RemoteDataSource) : DataSource {
 
@@ -22,5 +23,15 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
             }
         })
         return animeResult
+    }
+
+    override suspend fun getDetailAnime(id: Int): DetailAnimeResponse {
+        lateinit var animeDetail: DetailAnimeResponse
+        remoteDataSource.getDetailAnime(id, object : RemoteDataSource.GetDetailCallback {
+            override fun onAnimeReceived(anime: DetailAnimeResponse) {
+                animeDetail = anime
+            }
+        })
+        return animeDetail
     }
 }

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.masscode.manime.databinding.FragmentMoreBinding
 import com.masscode.manime.viewmodel.ViewModelFactory
 
@@ -27,7 +28,7 @@ class MoreFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val viewModelFactory = ViewModelFactory.getInstance(requireContext())
         viewModel = ViewModelProvider(this, viewModelFactory)[MoreViewModel::class.java]
-        val adapterAiring = MoreAdapter()
+        val adapterAiring = MoreAdapter { id -> showDetail(id) }
         val type = MoreFragmentArgs.fromBundle(requireArguments()).type
 
         viewModel.setType(type)
@@ -39,5 +40,10 @@ class MoreFragment : Fragment() {
             setHasFixedSize(true)
             adapter = adapterAiring
         }
+    }
+
+    private fun showDetail(id: Int) {
+        this.findNavController()
+            .navigate(MoreFragmentDirections.actionMoreFragmentToDetailAnimeFragment(id))
     }
 }

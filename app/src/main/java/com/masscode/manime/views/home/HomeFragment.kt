@@ -28,9 +28,9 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val viewModelFactory = ViewModelFactory.getInstance(requireContext())
         viewModel = ViewModelProvider(this, viewModelFactory)[HomeViewModel::class.java]
-        val adapterAiring = HomeAdapter()
-        val adapterUpcoming = HomeAdapter()
-        val adapterTV = HomeAdapter()
+        val adapterAiring = HomeAdapter { id -> showDetail(id) }
+        val adapterUpcoming = HomeAdapter { id -> showDetail(id) }
+        val adapterTV = HomeAdapter { id -> showDetail(id) }
 
         binding.topAiringText.visibility = View.GONE
         binding.upcomingText.visibility = View.GONE
@@ -83,6 +83,11 @@ class HomeFragment : Fragment() {
         binding.moreAiring.setOnClickListener { showMore("airing") }
         binding.moreUpcoming.setOnClickListener { showMore("upcoming") }
         binding.moreTv.setOnClickListener { showMore("tv") }
+    }
+
+    private fun showDetail(id: Int) {
+        this.findNavController()
+            .navigate(HomeFragmentDirections.actionHomeFragmentToDetailAnimeFragment(id))
     }
 
     private fun showMore(type: String) {
