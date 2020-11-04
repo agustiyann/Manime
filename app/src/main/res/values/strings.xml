@@ -14,4 +14,6 @@
     <string name="genres">Genres</string>
     <string name="popularity">Popularity</string>
     <string name="members">Members</string>
+    <string name="top_anime">Top Anime</string>
+    <string name="season">Season</string>
 </resources>

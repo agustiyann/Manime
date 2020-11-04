@@ -5,11 +5,13 @@
 
         <item
             android:id="@+id/top_anime"
-            android:title="Top Anime" />
+            android:icon="@drawable/ic_baseline_local_fire_department_24"
+            android:title="@string/top_anime" />
 
         <item
             android:id="@+id/season"
-            android:title="Season" />
+            android:icon="@drawable/ic_baseline_ac_unit_24"
+            android:title="@string/season" />
 
     </group>
 

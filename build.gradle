@@ -12,7 +12,6 @@ buildscript {
     ext.lottie_version                  = "3.4.2"
     ext.shimmer_version                 = "0.5.0"
     ext.logging_interceptor_version     = "4.8.0"
-    ext.palette_version                 = "1.0.0"
     repositories {
         google()
         jcenter()

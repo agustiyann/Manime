@@ -3,19 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/top_anime">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/top_anime"
         android:name="com.masscode.manime.views.home.HomeFragment"
         android:label="Top Anime"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_moreFragment"
-            app:destination="@id/moreFragment" />
+            app:destination="@id/moreFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
         <action
             android:id="@+id/action_homeFragment_to_detailAnimeFragment"
-            app:destination="@id/detailAnimeFragment" />
+            app:destination="@id/detailAnimeFragment"
+            app:enterAnim="@anim/from_transparent"
+            app:exitAnim="@anim/to_transparent"
+            app:popEnterAnim="@anim/from_transparent"
+            app:popExitAnim="@anim/to_transparent" />
     </fragment>
     <fragment
         android:id="@+id/moreFragment"
@@ -27,7 +35,11 @@
             app:argType="string" />
         <action
             android:id="@+id/action_moreFragment_to_detailAnimeFragment"
-            app:destination="@id/detailAnimeFragment" />
+            app:destination="@id/detailAnimeFragment"
+            app:enterAnim="@anim/from_transparent"
+            app:exitAnim="@anim/to_transparent"
+            app:popEnterAnim="@anim/from_transparent"
+            app:popExitAnim="@anim/to_transparent" />
     </fragment>
     <fragment
         android:id="@+id/detailAnimeFragment"
@@ -38,4 +50,9 @@
             android:name="id"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/season"
+        android:name="com.masscode.manime.views.season.SeasonFragment"
+        android:label="fragment_season"
+        tools:layout="@layout/fragment_season" />
 </navigation>
