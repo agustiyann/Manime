@@ -5,6 +5,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.masscode.manime.R
 import com.masscode.manime.databinding.FragmentSeasonBinding
 import com.masscode.manime.viewmodel.ViewModelFactory
@@ -32,8 +33,13 @@ class SeasonFragment : Fragment() {
         setHasOptionsMenu(true)
         val viewModelFactory = ViewModelFactory.getInstance(requireContext())
         viewModel = ViewModelProvider(this, viewModelFactory)[SeasonViewModel::class.java]
-        adapterSeason = SeasonAdapter()
+        adapterSeason = SeasonAdapter { id -> showDetail(id) }
         thisYear = Calendar.getInstance()[Calendar.YEAR]
+    }
+
+    private fun showDetail(id: Int) {
+        this.findNavController()
+            .navigate(SeasonFragmentDirections.actionSeasonToDetailAnimeFragment(id))
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -74,13 +80,11 @@ class SeasonFragment : Fragment() {
     }
 
     private fun refreshList(season: String) {
-        binding.loading.visibility = View.VISIBLE
         viewModel.setSeason(thisYear, season)
         setTitleSeason(season)
         viewModel.animeSeason.observe(viewLifecycleOwner, { anime ->
             if (anime.isNotEmpty()) {
                 adapterSeason.setData(anime)
-                binding.loading.visibility = View.GONE
             }
         })
     }

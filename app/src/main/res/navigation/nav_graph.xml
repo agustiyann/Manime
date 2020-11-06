@@ -54,5 +54,13 @@
         android:id="@+id/season"
         android:name="com.masscode.manime.views.season.SeasonFragment"
         android:label="fragment_season"
-        tools:layout="@layout/fragment_season" />
+        tools:layout="@layout/fragment_season" >
+        <action
+            android:id="@+id/action_season_to_detailAnimeFragment"
+            app:destination="@id/detailAnimeFragment"
+            app:enterAnim="@anim/from_transparent"
+            app:exitAnim="@anim/to_transparent"
+            app:popEnterAnim="@anim/from_transparent"
+            app:popExitAnim="@anim/to_transparent" />
+    </fragment>
 </navigation>

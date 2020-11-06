@@ -3,21 +3,20 @@ package com.masscode.manime.views.season
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.masscode.manime.R
 import com.masscode.manime.data.source.remote.response.AnimeListResponse
 import com.masscode.manime.databinding.ItemAnimeMoreBinding
 
-class SeasonAdapter : RecyclerView.Adapter<SeasonAdapter.SeasonViewHolder>() {
+class SeasonAdapter(private val showDetail: (id: Int) -> Unit) : RecyclerView.Adapter<SeasonAdapter.SeasonViewHolder>() {
 
-    private var listData = emptyList<AnimeListResponse>()
+    private var listData = ArrayList<AnimeListResponse>()
 
-    fun setData(newListData: List<AnimeListResponse>) {
-        val seasonDiffUtil = SeasonDiffUtil(listData, newListData)
-        val seasonDiffResult = DiffUtil.calculateDiff(seasonDiffUtil)
-        this.listData = newListData
-        seasonDiffResult.dispatchUpdatesTo(this)
+    fun setData(newListData: List<AnimeListResponse>?) {
+        if (newListData == null) return
+        listData.clear()
+        listData.addAll(newListData)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(
@@ -45,6 +44,7 @@ class SeasonAdapter : RecyclerView.Adapter<SeasonAdapter.SeasonViewHolder>() {
         fun bind(anime: AnimeListResponse) {
             binding.anime = anime
             binding.executePendingBindings()
+            binding.root.setOnClickListener { anime.id?.let { it1 -> showDetail(it1) } }
         }
     }
 }
