@@ -8,6 +8,7 @@ import com.masscode.manime.di.Injection
 import com.masscode.manime.views.detail.DetailAnimeViewModel
 import com.masscode.manime.views.home.HomeViewModel
 import com.masscode.manime.views.more.MoreViewModel
+import com.masscode.manime.views.season.SeasonViewModel
 
 class ViewModelFactory private constructor(private val repository: Repository) : ViewModelProvider.NewInstanceFactory() {
 
@@ -31,6 +32,9 @@ class ViewModelFactory private constructor(private val repository: Repository) :
             }
             modelClass.isAssignableFrom(DetailAnimeViewModel::class.java) -> {
                 DetailAnimeViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(SeasonViewModel::class.java) -> {
+                SeasonViewModel(repository) as T
             }
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }

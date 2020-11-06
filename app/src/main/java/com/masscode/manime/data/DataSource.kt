@@ -8,4 +8,6 @@ interface DataSource {
     suspend fun getTopAnime(type: String): List<AnimeListResponse>
 
     suspend fun getDetailAnime(id: Int): DetailAnimeResponse
+
+    suspend fun getSeasonAnime(year: Int, season: String): List<AnimeListResponse>
 }

@@ -16,4 +16,8 @@
     <string name="members">Members</string>
     <string name="top_anime">Top Anime</string>
     <string name="season">Season</string>
+    <string name="spring">Spring &#127793;</string>
+    <string name="summer">Summer &#127774;</string>
+    <string name="fall">Fall &#127810;</string>
+    <string name="winter">Winter &#10052;</string>
 </resources>
