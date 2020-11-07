@@ -1,10 +1,12 @@
 package com.masscode.manime.data.source.remote.network
 
 import com.masscode.manime.data.source.remote.response.DetailAnimeResponse
+import com.masscode.manime.data.source.remote.response.SearchAnimeRespon
 import com.masscode.manime.data.source.remote.response.SeasonAnimeRespon
 import com.masscode.manime.data.source.remote.response.TopAnimeResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiServices {
 
@@ -19,4 +21,7 @@ interface ApiServices {
         @Path("year") seasonYear: Int,
         @Path("season") seasonName: String
     ): SeasonAnimeRespon
+
+    @GET("search/anime?&page=1")
+    suspend fun getSearchAnime(@Query("q") query: String): SearchAnimeRespon
 }

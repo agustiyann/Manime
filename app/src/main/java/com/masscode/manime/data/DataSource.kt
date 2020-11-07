@@ -10,4 +10,6 @@ interface DataSource {
     suspend fun getDetailAnime(id: Int): DetailAnimeResponse
 
     suspend fun getSeasonAnime(year: Int, season: String): List<AnimeListResponse>
+
+    suspend fun getSearchAnime(query: String): List<AnimeListResponse>
 }

@@ -37,6 +37,13 @@ class RemoteDataSource private constructor(private val apiConfig: ApiConfig) {
         }
     }
 
+    suspend fun getSearchAnime(query: String, callback: GetAnimeCallback) {
+        withContext(Dispatchers.IO) {
+            val anime = apiConfig.api.getSearchAnime(query).results
+            callback.onAnimeReceived(anime)
+        }
+    }
+
     interface GetAnimeCallback {
         fun onAnimeReceived(animeList: List<AnimeListResponse>)
     }

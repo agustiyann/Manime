@@ -44,4 +44,14 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
         })
         return animeSeason
     }
+
+    override suspend fun getSearchAnime(query: String): List<AnimeListResponse> {
+        lateinit var animeResult: List<AnimeListResponse>
+        remoteDataSource.getSearchAnime(query, object : RemoteDataSource.GetAnimeCallback {
+            override fun onAnimeReceived(animeList: List<AnimeListResponse>) {
+                animeResult = animeList
+            }
+        })
+        return animeResult
+    }
 }

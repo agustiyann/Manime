@@ -63,4 +63,17 @@
             app:popEnterAnim="@anim/from_transparent"
             app:popExitAnim="@anim/to_transparent" />
     </fragment>
+    <fragment
+        android:id="@+id/search"
+        android:name="com.masscode.manime.views.search.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_search_to_detailAnimeFragment"
+            app:destination="@id/detailAnimeFragment"
+            app:enterAnim="@anim/from_transparent"
+            app:exitAnim="@anim/to_transparent"
+            app:popEnterAnim="@anim/from_transparent"
+            app:popExitAnim="@anim/to_transparent" />
+    </fragment>
 </navigation>

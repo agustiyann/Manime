@@ -20,4 +20,6 @@
     <string name="summer">Summer &#127774;</string>
     <string name="fall">Fall &#127810;</string>
     <string name="winter">Winter &#10052;</string>
+    <string name="search">Search</string>
+    <string name="type_something">Type something :)</string>
 </resources>
