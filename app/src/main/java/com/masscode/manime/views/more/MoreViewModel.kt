@@ -8,19 +8,17 @@ import com.masscode.manime.data.Repository
 import com.masscode.manime.data.source.remote.response.AnimeListResponse
 import kotlinx.coroutines.launch
 
-class MoreViewModel(private val repository: Repository): ViewModel() {
+class MoreViewModel(private val repository: Repository) : ViewModel() {
 
     private lateinit var type: String
-
-    fun setType(type: String) {
-        this.type = type
-    }
 
     private var _animeAiring = MutableLiveData<List<AnimeListResponse>>()
     val animeAiring: LiveData<List<AnimeListResponse>>
         get() = _animeAiring
 
-    init {
+    fun setType(type: String) {
+        this.type = type
+
         viewModelScope.launch {
             try {
                 val resultAiring = repository.getTopAnime(type)
