@@ -32,57 +32,68 @@ class HomeFragment : Fragment() {
         val adapterUpcoming = HomeAdapter { id -> showDetail(id) }
         val adapterTV = HomeAdapter { id -> showDetail(id) }
 
-        binding.topAiringText.visibility = View.GONE
-        binding.upcomingText.visibility = View.GONE
-        binding.tvText.visibility = View.GONE
-        binding.moreAiring.visibility = View.GONE
-        binding.moreUpcoming.visibility = View.GONE
-        binding.moreTv.visibility = View.GONE
-
-        binding.progressViewAiring.visibility = View.VISIBLE
-        binding.progressViewUpcoming.visibility = View.VISIBLE
-        binding.progressViewTv.visibility = View.VISIBLE
-        viewModel.animeAiring.observe(viewLifecycleOwner, { anime ->
-            if (anime != null) {
-                adapterAiring.setData(anime)
-                binding.progressViewAiring.visibility = View.GONE
-                binding.topAiringText.visibility = View.VISIBLE
-                binding.moreAiring.visibility = View.VISIBLE
-            }
-        })
-        viewModel.animeUpcoming.observe(viewLifecycleOwner, { anime ->
-            if (anime != null) {
-                adapterUpcoming.setData(anime)
-                binding.progressViewUpcoming.visibility = View.GONE
-                binding.upcomingText.visibility = View.VISIBLE
-                binding.moreUpcoming.visibility = View.VISIBLE
-            }
-        })
-        viewModel.animeTV.observe(viewLifecycleOwner, { anime ->
-            if (anime != null) {
-                adapterTV.setData(anime)
-                binding.progressViewTv.visibility = View.GONE
-                binding.tvText.visibility = View.VISIBLE
-                binding.moreTv.visibility = View.VISIBLE
-            }
-        })
-
-        with(binding.rvTopAiring) {
-            setHasFixedSize(true)
-            adapter = adapterAiring
-        }
-        with(binding.rvTopUpcoming) {
-            setHasFixedSize(true)
-            adapter = adapterUpcoming
-        }
-        with(binding.rvTopTv) {
-            setHasFixedSize(true)
-            adapter = adapterTV
+        binding.apply {
+            topAiringText.visibility = View.GONE
+            upcomingText.visibility = View.GONE
+            tvText.visibility = View.GONE
+            moreAiring.visibility = View.GONE
+            moreUpcoming.visibility = View.GONE
+            moreTv.visibility = View.GONE
+            progressViewAiring.visibility = View.VISIBLE
+            progressViewUpcoming.visibility = View.VISIBLE
+            progressViewTv.visibility = View.VISIBLE
         }
 
-        binding.moreAiring.setOnClickListener { showMore("airing") }
-        binding.moreUpcoming.setOnClickListener { showMore("upcoming") }
-        binding.moreTv.setOnClickListener { showMore("tv") }
+        viewModel.apply {
+            animeAiring.observe(viewLifecycleOwner, { anime ->
+                if (anime != null) {
+                    adapterAiring.setData(anime)
+                    binding.apply {
+                        progressViewAiring.visibility = View.GONE
+                        topAiringText.visibility = View.VISIBLE
+                        moreAiring.visibility = View.VISIBLE
+                    }
+                }
+            })
+            animeUpcoming.observe(viewLifecycleOwner, { anime ->
+                if (anime != null) {
+                    adapterUpcoming.setData(anime)
+                    binding.apply {
+                        progressViewUpcoming.visibility = View.GONE
+                        upcomingText.visibility = View.VISIBLE
+                        moreUpcoming.visibility = View.VISIBLE
+                    }
+                }
+            })
+            animeTV.observe(viewLifecycleOwner, { anime ->
+                if (anime != null) {
+                    adapterTV.setData(anime)
+                    binding.apply {
+                        progressViewTv.visibility = View.GONE
+                        tvText.visibility = View.VISIBLE
+                        moreTv.visibility = View.VISIBLE
+                    }
+                }
+            })
+        }
+
+        binding.apply {
+            rvTopAiring.apply {
+                setHasFixedSize(true)
+                adapter = adapterAiring
+            }
+            rvTopUpcoming.apply {
+                setHasFixedSize(true)
+                adapter = adapterUpcoming
+            }
+            rvTopTv.apply {
+                setHasFixedSize(true)
+                adapter = adapterTV
+            }
+            moreAiring.setOnClickListener { showMore("airing") }
+            moreUpcoming.setOnClickListener { showMore("upcoming") }
+            moreTv.setOnClickListener { showMore("tv") }
+        }
     }
 
     private fun showDetail(id: Int) {
