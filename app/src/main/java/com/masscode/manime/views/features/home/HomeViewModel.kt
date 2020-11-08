@@ -12,7 +12,7 @@ class HomeViewModel(private val repository: Repository) : ViewModel() {
 
     private var _animeAiring = MutableLiveData<List<AnimeListResponse>>()
     val animeAiring: LiveData<List<AnimeListResponse>>
-    get() = _animeAiring
+        get() = _animeAiring
 
     private var _animeUpcoming = MutableLiveData<List<AnimeListResponse>>()
     val animeUpcoming: LiveData<List<AnimeListResponse>>
@@ -21,6 +21,10 @@ class HomeViewModel(private val repository: Repository) : ViewModel() {
     private var _animeTV = MutableLiveData<List<AnimeListResponse>>()
     val animeTV: LiveData<List<AnimeListResponse>>
         get() = _animeTV
+
+    private var _animeMovie = MutableLiveData<List<AnimeListResponse>>()
+    val animeMovie: LiveData<List<AnimeListResponse>>
+        get() = _animeMovie
 
     init {
         viewModelScope.launch {
@@ -33,6 +37,9 @@ class HomeViewModel(private val repository: Repository) : ViewModel() {
 
                 val resultTV = repository.getTopAnime("tv")
                 _animeTV.value = resultTV
+
+                val resultMovie = repository.getTopAnime("movie")
+                _animeMovie.value = resultMovie
             } catch (e: Throwable) {
                 e.printStackTrace()
             }

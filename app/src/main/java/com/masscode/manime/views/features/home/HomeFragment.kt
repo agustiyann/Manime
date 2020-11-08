@@ -28,25 +28,38 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val viewModelFactory = ViewModelFactory.getInstance(requireContext())
         viewModel = ViewModelProvider(this, viewModelFactory)[HomeViewModel::class.java]
-        val adapterAiring = HomeAdapter { id -> showDetail(id) }
-        val adapterUpcoming = HomeAdapter { id -> showDetail(id) }
-        val adapterTV = HomeAdapter { id -> showDetail(id) }
+        setupVisibility()
+        observeData()
+    }
 
+    private fun setupVisibility() {
         binding.apply {
             topAiringText.visibility = View.GONE
             upcomingText.visibility = View.GONE
             tvText.visibility = View.GONE
+            movieText.visibility = View.GONE
+
             moreAiring.visibility = View.GONE
             moreUpcoming.visibility = View.GONE
             moreTv.visibility = View.GONE
+            moreMovie.visibility = View.GONE
+
             progressViewAiring.visibility = View.VISIBLE
             progressViewUpcoming.visibility = View.VISIBLE
             progressViewTv.visibility = View.VISIBLE
+            progressViewMovie.visibility = View.VISIBLE
         }
+    }
+
+    private fun observeData() {
+        val adapterAiring = HomeAdapter { id -> showDetail(id) }
+        val adapterUpcoming = HomeAdapter { id -> showDetail(id) }
+        val adapterTV = HomeAdapter { id -> showDetail(id) }
+        val adapterMovie = HomeAdapter { id -> showDetail(id) }
 
         viewModel.apply {
             animeAiring.observe(viewLifecycleOwner, { anime ->
-                if (anime != null) {
+                if (anime.isNotEmpty()) {
                     adapterAiring.setData(anime)
                     binding.apply {
                         progressViewAiring.visibility = View.GONE
@@ -56,7 +69,7 @@ class HomeFragment : Fragment() {
                 }
             })
             animeUpcoming.observe(viewLifecycleOwner, { anime ->
-                if (anime != null) {
+                if (anime.isNotEmpty()) {
                     adapterUpcoming.setData(anime)
                     binding.apply {
                         progressViewUpcoming.visibility = View.GONE
@@ -66,12 +79,22 @@ class HomeFragment : Fragment() {
                 }
             })
             animeTV.observe(viewLifecycleOwner, { anime ->
-                if (anime != null) {
+                if (anime.isNotEmpty()) {
                     adapterTV.setData(anime)
                     binding.apply {
                         progressViewTv.visibility = View.GONE
                         tvText.visibility = View.VISIBLE
                         moreTv.visibility = View.VISIBLE
+                    }
+                }
+            })
+            animeMovie.observe(viewLifecycleOwner, { anime ->
+                if (anime.isNotEmpty()) {
+                    adapterMovie.setData(anime)
+                    binding.apply {
+                        progressViewMovie.visibility = View.GONE
+                        movieText.visibility = View.VISIBLE
+                        moreMovie.visibility = View.VISIBLE
                     }
                 }
             })
@@ -90,9 +113,14 @@ class HomeFragment : Fragment() {
                 setHasFixedSize(true)
                 adapter = adapterTV
             }
+            rvTopMovie.apply {
+                setHasFixedSize(true)
+                adapter = adapterMovie
+            }
             moreAiring.setOnClickListener { showMore("airing") }
             moreUpcoming.setOnClickListener { showMore("upcoming") }
             moreTv.setOnClickListener { showMore("tv") }
+            moreMovie.setOnClickListener { showMore("movie") }
         }
     }
 
