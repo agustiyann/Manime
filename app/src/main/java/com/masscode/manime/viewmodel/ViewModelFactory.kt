@@ -5,11 +5,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.masscode.manime.data.Repository
 import com.masscode.manime.di.Injection
-import com.masscode.manime.views.detail.DetailAnimeViewModel
-import com.masscode.manime.views.home.HomeViewModel
-import com.masscode.manime.views.more.MoreViewModel
-import com.masscode.manime.views.search.SearchViewModel
-import com.masscode.manime.views.season.SeasonViewModel
+import com.masscode.manime.views.features.detail.DetailAnimeViewModel
+import com.masscode.manime.views.features.home.HomeViewModel
+import com.masscode.manime.views.features.more.MoreViewModel
+import com.masscode.manime.views.features.search.SearchViewModel
+import com.masscode.manime.views.features.season.SeasonViewModel
 
 class ViewModelFactory private constructor(private val repository: Repository) : ViewModelProvider.NewInstanceFactory() {
 

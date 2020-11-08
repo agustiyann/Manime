@@ -1,4 +1,4 @@
-package com.masscode.manime.utils
+package com.masscode.manime.views.adapter
 
 import android.annotation.SuppressLint
 import android.widget.ImageView

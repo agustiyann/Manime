@@ -1,4 +1,4 @@
-package com.masscode.manime.views.more
+package com.masscode.manime.views.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,7 @@ import com.masscode.manime.R
 import com.masscode.manime.data.source.remote.response.AnimeListResponse
 import com.masscode.manime.databinding.ItemAnimeMoreBinding
 
-class MoreAdapter(private val showDetail: (id: Int) -> Unit) : RecyclerView.Adapter<MoreAdapter.MoreViewHolder>() {
+class RecyclerViewGridAdapter(private val showDetail: (id: Int) -> Unit) : RecyclerView.Adapter<RecyclerViewGridAdapter.MoreViewHolder>() {
 
     private var listData = ArrayList<AnimeListResponse>()
 

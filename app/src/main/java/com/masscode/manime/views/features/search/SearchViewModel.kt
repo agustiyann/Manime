@@ -1,4 +1,4 @@
-package com.masscode.manime.views.search
+package com.masscode.manime.views.features.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.search.SearchFragment">
+        tools:context=".views.features.search.SearchFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_anime_search"

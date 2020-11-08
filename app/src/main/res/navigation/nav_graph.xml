@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/top_anime"
-        android:name="com.masscode.manime.views.home.HomeFragment"
+        android:name="com.masscode.manime.views.features.home.HomeFragment"
         android:label="Top Anime"
         tools:layout="@layout/fragment_home">
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/moreFragment"
-        android:name="com.masscode.manime.views.more.MoreFragment"
+        android:name="com.masscode.manime.views.features.more.MoreFragment"
         android:label="More"
         tools:layout="@layout/fragment_more">
         <argument
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailAnimeFragment"
-        android:name="com.masscode.manime.views.detail.DetailAnimeFragment"
+        android:name="com.masscode.manime.views.features.detail.DetailAnimeFragment"
         android:label="Detail"
         tools:layout="@layout/fragment_detail_anime">
         <argument
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/season"
-        android:name="com.masscode.manime.views.season.SeasonFragment"
+        android:name="com.masscode.manime.views.features.season.SeasonFragment"
         android:label="fragment_season"
         tools:layout="@layout/fragment_season" >
         <action
@@ -65,7 +65,7 @@
     </fragment>
     <fragment
         android:id="@+id/search"
-        android:name="com.masscode.manime.views.search.SearchFragment"
+        android:name="com.masscode.manime.views.features.search.SearchFragment"
         android:label="Search"
         tools:layout="@layout/fragment_search" >
         <action

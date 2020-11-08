@@ -1,4 +1,4 @@
-package com.masscode.manime.views.home
+package com.masscode.manime.views.features.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

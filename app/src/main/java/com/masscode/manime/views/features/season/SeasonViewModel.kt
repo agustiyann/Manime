@@ -1,4 +1,4 @@
-package com.masscode.manime.views.season
+package com.masscode.manime.views.features.season
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

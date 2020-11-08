@@ -1,4 +1,4 @@
-package com.masscode.manime.views.search
+package com.masscode.manime.views.features.search
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -10,13 +10,13 @@ import androidx.navigation.fragment.findNavController
 import com.masscode.manime.R
 import com.masscode.manime.databinding.FragmentSearchBinding
 import com.masscode.manime.viewmodel.ViewModelFactory
-import com.masscode.manime.views.season.SeasonAdapter
+import com.masscode.manime.views.adapter.RecyclerViewGridAdapter
 
 class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
     private lateinit var viewModel: SearchViewModel
-    private lateinit var adapterResult: SeasonAdapter
+    private lateinit var adapterResult: RecyclerViewGridAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +32,7 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val viewModelFactory = ViewModelFactory.getInstance(requireContext())
         viewModel = ViewModelProvider(this, viewModelFactory)[SearchViewModel::class.java]
-        adapterResult = SeasonAdapter { id -> showDetail(id) }
+        adapterResult = RecyclerViewGridAdapter { id -> showDetail(id) }
         with(binding.rvAnimeSearch) {
             setHasFixedSize(true)
             adapter = adapterResult

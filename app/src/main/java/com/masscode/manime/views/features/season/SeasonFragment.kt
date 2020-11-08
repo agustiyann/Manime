@@ -1,4 +1,4 @@
-package com.masscode.manime.views.season
+package com.masscode.manime.views.features.season
 
 import android.os.Bundle
 import android.view.*
@@ -9,13 +9,14 @@ import androidx.navigation.fragment.findNavController
 import com.masscode.manime.R
 import com.masscode.manime.databinding.FragmentSeasonBinding
 import com.masscode.manime.viewmodel.ViewModelFactory
+import com.masscode.manime.views.adapter.RecyclerViewGridAdapter
 import java.util.*
 
 class SeasonFragment : Fragment() {
 
     private lateinit var binding: FragmentSeasonBinding
     private lateinit var viewModel: SeasonViewModel
-    private lateinit var adapterSeason: SeasonAdapter
+    private lateinit var adapterSeason: RecyclerViewGridAdapter
     private var thisYear = 0
 
     override fun onCreateView(
@@ -33,7 +34,7 @@ class SeasonFragment : Fragment() {
         setHasOptionsMenu(true)
         val viewModelFactory = ViewModelFactory.getInstance(requireContext())
         viewModel = ViewModelProvider(this, viewModelFactory)[SeasonViewModel::class.java]
-        adapterSeason = SeasonAdapter { id -> showDetail(id) }
+        adapterSeason = RecyclerViewGridAdapter { id -> showDetail(id) }
         thisYear = Calendar.getInstance()[Calendar.YEAR]
     }
 

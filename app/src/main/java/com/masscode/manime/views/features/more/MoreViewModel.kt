@@ -1,4 +1,4 @@
-package com.masscode.manime.views.more
+package com.masscode.manime.views.features.more
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

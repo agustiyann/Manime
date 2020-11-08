@@ -1,4 +1,4 @@
-package com.masscode.manime.views.more
+package com.masscode.manime.views.features.more
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.masscode.manime.views.adapter.RecyclerViewGridAdapter
 import com.masscode.manime.databinding.FragmentMoreBinding
 import com.masscode.manime.viewmodel.ViewModelFactory
 
@@ -28,7 +29,7 @@ class MoreFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val viewModelFactory = ViewModelFactory.getInstance(requireContext())
         viewModel = ViewModelProvider(this, viewModelFactory)[MoreViewModel::class.java]
-        val adapterAiring = MoreAdapter { id -> showDetail(id) }
+        val adapterAiring = RecyclerViewGridAdapter { id -> showDetail(id) }
         val type = MoreFragmentArgs.fromBundle(requireArguments()).type
 
         viewModel.setType(type)
