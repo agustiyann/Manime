@@ -83,7 +83,7 @@
                             android:layout_height="wrap_content"
                             android:text="@{anime.score.toString()}"
                             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/purple_500"
+                            android:textColor="@color/gold"
                             android:textStyle="bold"
                             app:drawableStartCompat="@drawable/ic_baseline_star_24"
                             tools:text="8.65" />

@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="backgroundNight">#1F1F1F</color>
     <color name="backgroundToolbarNight">#303030</color>
+    <color name="gold">#FFD700</color>
 </resources>
