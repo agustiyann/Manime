@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.masscode.manime.R
-import com.masscode.manime.data.source.remote.response.CharactersListResponse
+import com.masscode.manime.data.source.remote.response.detail.CharactersListResponse
 import com.masscode.manime.databinding.ItemCharactersListBinding
 
-class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
+class CharacterAdapter(private val showDetail: (character: CharactersListResponse) -> Unit) :
+    RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
     private var listData = ArrayList<CharactersListResponse>()
     private val limit: Int = 20
@@ -42,11 +43,12 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
             listData.size
     }
 
-    class CharacterViewHolder(private val binding: ItemCharactersListBinding) :
+    inner class CharacterViewHolder(private val binding: ItemCharactersListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(character: CharactersListResponse) {
             binding.character = character
             binding.executePendingBindings()
+            binding.root.setOnClickListener { showDetail(character) }
         }
     }
 }

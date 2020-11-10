@@ -2,8 +2,8 @@ package com.masscode.manime.data
 
 import com.masscode.manime.data.source.remote.RemoteDataSource
 import com.masscode.manime.data.source.remote.response.AnimeListResponse
-import com.masscode.manime.data.source.remote.response.CharactersListResponse
-import com.masscode.manime.data.source.remote.response.DetailAnimeResponse
+import com.masscode.manime.data.source.remote.response.detail.CharactersListResponse
+import com.masscode.manime.data.source.remote.response.detail.DetailAnimeResponse
 
 class Repository private constructor(private val remoteDataSource: RemoteDataSource) : DataSource {
 

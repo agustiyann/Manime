@@ -64,4 +64,5 @@ dependencies {
     implementation "com.airbnb.android:lottie:$lottie_version"
     implementation "com.facebook.shimmer:shimmer:$shimmer_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
+    implementation "de.hdodenhof:circleimageview:$circle_imageview_version"
 }

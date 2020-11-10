@@ -1,6 +1,10 @@
 package com.masscode.manime.data.source.remote.network
 
-import com.masscode.manime.data.source.remote.response.*
+import com.masscode.manime.data.source.remote.response.detail.CharactersResponse
+import com.masscode.manime.data.source.remote.response.detail.DetailAnimeResponse
+import com.masscode.manime.data.source.remote.response.search.SearchAnimeRespon
+import com.masscode.manime.data.source.remote.response.season.SeasonAnimeRespon
+import com.masscode.manime.data.source.remote.response.top.TopAnimeResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

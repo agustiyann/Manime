@@ -5,14 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.masscode.manime.data.Repository
-import com.masscode.manime.data.source.remote.response.CharactersListResponse
-import com.masscode.manime.data.source.remote.response.DetailAnimeResponse
+import com.masscode.manime.data.source.remote.response.detail.CharactersListResponse
+import com.masscode.manime.data.source.remote.response.detail.DetailAnimeResponse
 import kotlinx.coroutines.launch
 import kotlin.properties.Delegates
 
 class DetailAnimeViewModel(private val repository: Repository) : ViewModel() {
-
-    private var id by Delegates.notNull<Int>()
 
     private var _anime = MutableLiveData<DetailAnimeResponse>()
     val anime: LiveData<DetailAnimeResponse>
@@ -23,8 +21,6 @@ class DetailAnimeViewModel(private val repository: Repository) : ViewModel() {
         get() = _characters
 
     fun setDetailAnime(id: Int) {
-        this.id = id
-
         viewModelScope.launch {
             val detailAnime = repository.getDetailAnime(id)
             _anime.value = detailAnime

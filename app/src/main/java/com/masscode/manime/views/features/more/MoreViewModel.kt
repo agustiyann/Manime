@@ -10,15 +10,11 @@ import kotlinx.coroutines.launch
 
 class MoreViewModel(private val repository: Repository) : ViewModel() {
 
-    private lateinit var type: String
-
     private var _animeAiring = MutableLiveData<List<AnimeListResponse>>()
     val animeAiring: LiveData<List<AnimeListResponse>>
         get() = _animeAiring
 
     fun setType(type: String) {
-        this.type = type
-
         viewModelScope.launch {
             try {
                 val resultAiring = repository.getTopAnime(type)

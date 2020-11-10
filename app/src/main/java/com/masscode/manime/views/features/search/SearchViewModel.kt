@@ -14,11 +14,7 @@ class SearchViewModel(private val repository: Repository) : ViewModel() {
     val animeResult: LiveData<List<AnimeListResponse>>
         get() = _animeResult
 
-    private lateinit var query: String
-
     fun setResult(query: String) {
-        this.query = query
-
         viewModelScope.launch {
             try {
                 val result = repository.getSearchAnime(query)

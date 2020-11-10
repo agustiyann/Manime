@@ -1,4 +1,4 @@
-package com.masscode.manime.data.source.remote.response
+package com.masscode.manime.data.source.remote.response.detail
 
 import com.squareup.moshi.Json
 

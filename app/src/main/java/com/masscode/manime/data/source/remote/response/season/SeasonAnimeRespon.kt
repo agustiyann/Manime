@@ -1,5 +1,6 @@
-package com.masscode.manime.data.source.remote.response
+package com.masscode.manime.data.source.remote.response.season
 
+import com.masscode.manime.data.source.remote.response.AnimeListResponse
 import com.squareup.moshi.Json
 
 data class SeasonAnimeRespon(

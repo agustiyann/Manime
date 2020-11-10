@@ -24,4 +24,6 @@
     <string name="type_something">Type something :)</string>
     <string name="movie">Movie</string>
     <string name="characters">Famous Characters</string>
+    <string name="voice_actors">Voice Actors</string>
+    <string name="close">Close</string>
 </resources>

@@ -7,7 +7,7 @@
 
         <variable
             name="anime"
-            type="com.masscode.manime.data.source.remote.response.DetailAnimeResponse" />
+            type="com.masscode.manime.data.source.remote.response.detail.DetailAnimeResponse" />
 
     </data>
 

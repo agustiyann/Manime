@@ -2,8 +2,8 @@ package com.masscode.manime.data.source.remote
 
 import com.masscode.manime.data.source.remote.network.ApiConfig
 import com.masscode.manime.data.source.remote.response.AnimeListResponse
-import com.masscode.manime.data.source.remote.response.CharactersListResponse
-import com.masscode.manime.data.source.remote.response.DetailAnimeResponse
+import com.masscode.manime.data.source.remote.response.detail.CharactersListResponse
+import com.masscode.manime.data.source.remote.response.detail.DetailAnimeResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
