@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.masscode.manime.R
 import com.masscode.manime.databinding.FragmentDetailAnimeBinding
 import com.masscode.manime.viewmodel.ViewModelFactory
+import com.masscode.manime.views.adapter.CharacterAdapter
 
 class DetailAnimeFragment : Fragment() {
 
@@ -32,6 +33,7 @@ class DetailAnimeFragment : Fragment() {
         val viewModelFactory = ViewModelFactory.getInstance(requireContext())
         viewModel = ViewModelProvider(this, viewModelFactory)[DetailAnimeViewModel::class.java]
         val id = DetailAnimeFragmentArgs.fromBundle(requireArguments()).id
+        val adapterCharacters = CharacterAdapter()
 
         viewModel.setDetailAnime(id)
         viewModel.anime.observe(viewLifecycleOwner, { anime ->
@@ -52,5 +54,14 @@ class DetailAnimeFragment : Fragment() {
                 }
             }
         })
+        viewModel.characters.observe(viewLifecycleOwner, { characters ->
+            if (characters.isNotEmpty()) {
+                adapterCharacters.setData(characters)
+            }
+        })
+        binding.rvCharacters.apply {
+            setHasFixedSize(true)
+            adapter = adapterCharacters
+        }
     }
 }

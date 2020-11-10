@@ -2,6 +2,7 @@ package com.masscode.manime.data
 
 import com.masscode.manime.data.source.remote.RemoteDataSource
 import com.masscode.manime.data.source.remote.response.AnimeListResponse
+import com.masscode.manime.data.source.remote.response.CharactersListResponse
 import com.masscode.manime.data.source.remote.response.DetailAnimeResponse
 
 class Repository private constructor(private val remoteDataSource: RemoteDataSource) : DataSource {
@@ -53,5 +54,15 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
             }
         })
         return animeResult
+    }
+
+    override suspend fun getCharacters(id: Int): List<CharactersListResponse> {
+        lateinit var charactersResult: List<CharactersListResponse>
+        remoteDataSource.getCharacters(id, object : RemoteDataSource.GetCharactersCallback {
+            override fun onCharactersReceived(characters: List<CharactersListResponse>) {
+                charactersResult = characters
+            }
+        })
+        return charactersResult
     }
 }
