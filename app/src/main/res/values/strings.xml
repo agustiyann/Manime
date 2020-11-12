@@ -26,4 +26,6 @@
     <string name="characters">Famous Characters</string>
     <string name="voice_actors">Voice Actors</string>
     <string name="close">Close</string>
+    <string name="videos">Videos</string>
+    <string name="play">Play</string>
 </resources>

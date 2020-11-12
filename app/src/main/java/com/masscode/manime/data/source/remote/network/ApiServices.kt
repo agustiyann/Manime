@@ -2,6 +2,7 @@ package com.masscode.manime.data.source.remote.network
 
 import com.masscode.manime.data.source.remote.response.detail.CharactersResponse
 import com.masscode.manime.data.source.remote.response.detail.DetailAnimeResponse
+import com.masscode.manime.data.source.remote.response.detail.VideosResponse
 import com.masscode.manime.data.source.remote.response.search.SearchAnimeRespon
 import com.masscode.manime.data.source.remote.response.season.SeasonAnimeRespon
 import com.masscode.manime.data.source.remote.response.top.TopAnimeResponse
@@ -28,4 +29,7 @@ interface ApiServices {
 
     @GET("anime/{id}/characters_staff")
     suspend fun getCharacters(@Path("id") id: Int): CharactersResponse
+
+    @GET("anime/{id}/videos")
+    suspend fun getVideos(@Path("id") id: Int): VideosResponse
 }

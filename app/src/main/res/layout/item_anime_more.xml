@@ -17,7 +17,7 @@
         android:padding="8dp"
         android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp">
@@ -30,7 +30,7 @@
                 android:scaleType="centerCrop"
                 tools:src="@color/purple_500" />
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:id="@+id/title"

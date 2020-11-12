@@ -1,13 +1,16 @@
 package com.masscode.manime.views.features.detail
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +20,7 @@ import com.masscode.manime.databinding.CharacterDialogBinding
 import com.masscode.manime.databinding.FragmentDetailAnimeBinding
 import com.masscode.manime.viewmodel.ViewModelFactory
 import com.masscode.manime.views.adapter.CharacterAdapter
+import com.masscode.manime.views.adapter.VideoAdapter
 import com.masscode.manime.views.adapter.VoiceActorAdapter
 
 class DetailAnimeFragment : Fragment() {
@@ -35,42 +39,61 @@ class DetailAnimeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModelFactory = ViewModelFactory.getInstance(requireContext())
-        viewModel = ViewModelProvider(this, viewModelFactory)[DetailAnimeViewModel::class.java]
         val id = DetailAnimeFragmentArgs.fromBundle(requireArguments()).id
-        val adapterCharacters = CharacterAdapter { character -> showDetail(character) }
+        val characterAdapter = CharacterAdapter { character -> showDetailCharacter(character) }
+        val videosAdapter = VideoAdapter { url -> showVideo(url) }
+        val viewModelFactory = ViewModelFactory.getInstance(requireContext())
 
-        viewModel.setDetailAnime(id)
-        viewModel.anime.observe(viewLifecycleOwner, { anime ->
-            binding.anime = anime
-            anime.genres.let {
-                for (genre in it.indices) {
-                    val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT
-                    )
-                    params.setMargins(0, 0, 16, 0)
-                    val genreTextView = TextView(requireContext())
-                    genreTextView.setBackgroundResource(R.drawable.bg_genres)
-                    genreTextView.layoutParams = params
-                    genreTextView.setTextColor(Color.parseColor("#ffffff"))
-                    genreTextView.text = anime.genres[genre].name
-                    binding.listGenres.addView(genreTextView)
-                }
+        viewModel =
+            ViewModelProvider(this, viewModelFactory)[DetailAnimeViewModel::class.java].apply {
+                setDetailAnime(id)
+
+                anime.observe(viewLifecycleOwner, { anime ->
+                    binding.anime = anime
+                    anime.genres.let {
+                        for (genre in it.indices) {
+                            val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.WRAP_CONTENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT
+                            )
+                            params.setMargins(0, 0, 16, 0)
+                            val genreTextView = TextView(requireContext()).apply {
+                                setBackgroundResource(R.drawable.bg_genres)
+                                layoutParams = params
+                                setTextColor(Color.parseColor("#ffffff"))
+                                text = anime.genres[genre].name
+                            }
+                            binding.listGenres.addView(genreTextView)
+                        }
+                    }
+                })
+
+                characters.observe(viewLifecycleOwner, { characters ->
+                    if (characters.isNotEmpty()) {
+                        characterAdapter.setData(characters)
+                    }
+                })
+
+                videos.observe(viewLifecycleOwner, { videos ->
+                    if (videos.isNotEmpty()) {
+                        videosAdapter.setData(videos)
+                    }
+                })
             }
-        })
-        viewModel.characters.observe(viewLifecycleOwner, { characters ->
-            if (characters.isNotEmpty()) {
-                adapterCharacters.setData(characters)
+
+        with(binding) {
+            rvCharacters.apply {
+                setHasFixedSize(true)
+                adapter = characterAdapter
             }
-        })
-        binding.rvCharacters.apply {
-            setHasFixedSize(true)
-            adapter = adapterCharacters
+            rvVideos.apply {
+                setHasFixedSize(true)
+                adapter = videosAdapter
+            }
         }
     }
 
-    private fun showDetail(mCharacter: CharactersListResponse) {
+    private fun showDetailCharacter(mCharacter: CharactersListResponse) {
         val mDialogView: CharacterDialogBinding = DataBindingUtil.inflate(
             LayoutInflater.from(requireContext()),
             R.layout.character_dialog,
@@ -92,5 +115,15 @@ class DetailAnimeFragment : Fragment() {
         val dialog = builder.show()
 
         mDialogView.closeButton.setOnClickListener { dialog.dismiss() }
+    }
+
+    private fun showVideo(url: String?) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+
+        try {
+            startActivity(intent)
+        } catch (t: Throwable) {
+            Toast.makeText(requireContext(), "Ups, slowly!", Toast.LENGTH_SHORT).show()
+        }
     }
 }

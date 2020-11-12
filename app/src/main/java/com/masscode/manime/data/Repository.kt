@@ -4,6 +4,7 @@ import com.masscode.manime.data.source.remote.RemoteDataSource
 import com.masscode.manime.data.source.remote.response.AnimeListResponse
 import com.masscode.manime.data.source.remote.response.detail.CharactersListResponse
 import com.masscode.manime.data.source.remote.response.detail.DetailAnimeResponse
+import com.masscode.manime.data.source.remote.response.detail.Promo
 
 class Repository private constructor(private val remoteDataSource: RemoteDataSource) : DataSource {
 
@@ -64,5 +65,15 @@ class Repository private constructor(private val remoteDataSource: RemoteDataSou
             }
         })
         return charactersResult
+    }
+
+    override suspend fun getVideos(id: Int): List<Promo> {
+        lateinit var videosResult: List<Promo>
+        remoteDataSource.getVideos(id, object : RemoteDataSource.GetVideosCallback {
+            override fun onVideosReceived(videos: List<Promo>) {
+                videosResult = videos
+            }
+        })
+        return videosResult
     }
 }

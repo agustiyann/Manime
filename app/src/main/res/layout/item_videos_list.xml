@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="promo"
+            type="com.masscode.manime.data.source.remote.response.detail.Promo" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        app:cardCornerRadius="8dp">
+
+        <ImageView
+            android:id="@+id/image_video"
+            showImageFromUrl="@{promo.imageUrl}"
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            android:contentDescription="@string/poster"
+            android:scaleType="centerCrop"
+            tools:src="@color/purple_500" />
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/play"
+            android:src="@drawable/ic_baseline_play_circle_outline_24" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

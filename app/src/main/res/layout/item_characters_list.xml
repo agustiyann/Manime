@@ -11,7 +11,7 @@
 
     </data>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="80dp"
         android:layout_height="120dp"
         android:layout_marginHorizontal="8dp"
@@ -26,6 +26,6 @@
             android:scaleType="centerCrop"
             tools:background="@color/purple_500" />
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </layout>

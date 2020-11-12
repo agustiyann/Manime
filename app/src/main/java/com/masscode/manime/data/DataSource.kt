@@ -3,6 +3,7 @@ package com.masscode.manime.data
 import com.masscode.manime.data.source.remote.response.AnimeListResponse
 import com.masscode.manime.data.source.remote.response.detail.CharactersListResponse
 import com.masscode.manime.data.source.remote.response.detail.DetailAnimeResponse
+import com.masscode.manime.data.source.remote.response.detail.Promo
 
 interface DataSource {
 
@@ -15,4 +16,6 @@ interface DataSource {
     suspend fun getSearchAnime(query: String): List<AnimeListResponse>
 
     suspend fun getCharacters(id: Int): List<CharactersListResponse>
+
+    suspend fun getVideos(id: Int): List<Promo>
 }

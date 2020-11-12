@@ -4,6 +4,8 @@ import com.masscode.manime.data.source.remote.network.ApiConfig
 import com.masscode.manime.data.source.remote.response.AnimeListResponse
 import com.masscode.manime.data.source.remote.response.detail.CharactersListResponse
 import com.masscode.manime.data.source.remote.response.detail.DetailAnimeResponse
+import com.masscode.manime.data.source.remote.response.detail.Promo
+import com.masscode.manime.data.source.remote.response.detail.VideosResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -52,6 +54,13 @@ class RemoteDataSource private constructor(private val apiConfig: ApiConfig) {
         }
     }
 
+    suspend fun getVideos(id: Int, callback: GetVideosCallback) {
+        withContext(Dispatchers.IO) {
+            val videos = apiConfig.api.getVideos(id).promo
+            callback.onVideosReceived(videos)
+        }
+    }
+
     interface GetAnimeCallback {
         fun onAnimeReceived(animeList: List<AnimeListResponse>)
     }
@@ -62,5 +71,9 @@ class RemoteDataSource private constructor(private val apiConfig: ApiConfig) {
 
     interface GetCharactersCallback {
         fun onCharactersReceived(characters: List<CharactersListResponse>)
+    }
+
+    interface GetVideosCallback {
+        fun onVideosReceived(videos: List<Promo>)
     }
 }
