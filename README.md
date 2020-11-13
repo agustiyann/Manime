@@ -49,12 +49,6 @@ All data is taken from [Jikan API](https://jikan.moe), for documentation can be 
 ## Contribute
 If you want to contribute to this repository, you're always welcome!
 
-## To Do
-- [ ] Implement [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/)
-- [ ] Add [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) for dependecy injection
-- [ ] Add instrumental test
-- [ ] Add unit test
-
 ## License
 ```
    Copyright (C) 2020 Agus Tiyansyah Syam
