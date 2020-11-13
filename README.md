@@ -8,6 +8,8 @@
 Manime is an application to view the most popular and newest anime list and to view anime list based on season, there are complete details about the anime. Based on MVVM,
 architecture component, and repository pattern.
 
+<img src="/preview/manime.gif" align="right"/>
+
 ## Features
 - Top Anime
   - Airing
