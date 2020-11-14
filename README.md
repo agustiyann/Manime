@@ -52,6 +52,9 @@ Go to the [Releases](https://github.com/agustiyann/Manime/releases) to download 
 ## Contribute
 If you want to contribute to this repository, you're always welcome!
 
+## Stargazers
+[![Stargazers repo roster for @agustiyann/Manime](https://reporoster.com/stars/agustiyann/Manime)](https://github.com/agustiyann/Manime/stargazers)
+
 ## License
 ```
    Copyright (C) 2020 Agus Tiyansyah Syam
