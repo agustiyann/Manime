@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.masscode.manime.databinding.FragmentHomeBinding
+import com.masscode.manime.utils.enum.More
 import com.masscode.manime.utils.gone
 import com.masscode.manime.utils.visible
 import com.masscode.manime.views.base.viewmodel.ViewModelFactory
@@ -119,10 +120,10 @@ class HomeFragment : Fragment() {
                 setHasFixedSize(true)
                 adapter = adapterMovie
             }
-            moreAiring.setOnClickListener { showMore("airing") }
-            moreUpcoming.setOnClickListener { showMore("upcoming") }
-            moreTv.setOnClickListener { showMore("tv") }
-            moreMovie.setOnClickListener { showMore("movie") }
+            moreAiring.setOnClickListener { showMore(More.AIRING) }
+            moreUpcoming.setOnClickListener { showMore(More.UPCOMING) }
+            moreTv.setOnClickListener { showMore(More.TV) }
+            moreMovie.setOnClickListener { showMore(More.MOVIE) }
         }
     }
 
@@ -131,7 +132,7 @@ class HomeFragment : Fragment() {
             .navigate(HomeFragmentDirections.actionHomeFragmentToDetailAnimeFragment(id))
     }
 
-    private fun showMore(type: String) {
+    private fun showMore(type: More) {
         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToMoreFragment(type))
     }
 }

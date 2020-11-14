@@ -32,9 +32,9 @@ class MoreFragment : Fragment() {
         val viewModelFactory = ViewModelFactory.getInstance(requireContext())
         viewModel = ViewModelProvider(this, viewModelFactory)[MoreViewModel::class.java]
         val adapterAiring = RecyclerViewGridAdapter { id -> showDetail(id) }
-        val type = MoreFragmentArgs.fromBundle(requireArguments()).type
+        val data = MoreFragmentArgs.fromBundle(requireArguments()).type
 
-        viewModel.setType(type)
+        viewModel.setType(data.type)
         binding.loading.visible()
         viewModel.animeAiring.observe(viewLifecycleOwner, { anime ->
             if (anime != null) {
