@@ -2,17 +2,16 @@ package com.masscode.manime.views.features.season
 
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.masscode.manime.R
-import com.masscode.manime.app.ui.views.features.season.SeasonFragmentDirections
 import com.masscode.manime.databinding.FragmentSeasonBinding
 import com.masscode.manime.utils.gone
 import com.masscode.manime.utils.visible
-import com.masscode.manime.views.base.viewmodel.ViewModelFactory
 import com.masscode.manime.views.adapter.RecyclerViewGridAdapter
+import com.masscode.manime.views.base.viewmodel.ViewModelFactory
 import java.util.*
 
 class SeasonFragment : Fragment() {

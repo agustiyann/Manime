@@ -7,12 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.masscode.manime.app.ui.views.features.more.MoreFragmentArgs
-import com.masscode.manime.app.ui.views.features.more.MoreFragmentDirections
-import com.masscode.manime.views.adapter.RecyclerViewGridAdapter
 import com.masscode.manime.databinding.FragmentMoreBinding
 import com.masscode.manime.utils.gone
 import com.masscode.manime.utils.visible
+import com.masscode.manime.views.adapter.RecyclerViewGridAdapter
 import com.masscode.manime.views.base.viewmodel.ViewModelFactory
 
 class MoreFragment : Fragment() {

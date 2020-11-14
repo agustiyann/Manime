@@ -8,12 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.masscode.manime.R
-import com.masscode.manime.app.ui.views.features.search.SearchFragmentDirections
 import com.masscode.manime.databinding.FragmentSearchBinding
 import com.masscode.manime.utils.gone
 import com.masscode.manime.utils.visible
-import com.masscode.manime.views.base.viewmodel.ViewModelFactory
 import com.masscode.manime.views.adapter.RecyclerViewGridAdapter
+import com.masscode.manime.views.base.viewmodel.ViewModelFactory
 
 class SearchFragment : Fragment() {
 

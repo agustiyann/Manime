@@ -14,7 +14,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.masscode.manime.R
-import com.masscode.manime.app.ui.views.features.detail.DetailAnimeFragmentArgs
 import com.masscode.manime.data.source.remote.response.detail.CharactersListResponse
 import com.masscode.manime.databinding.CharacterDialogBinding
 import com.masscode.manime.databinding.FragmentDetailAnimeBinding
