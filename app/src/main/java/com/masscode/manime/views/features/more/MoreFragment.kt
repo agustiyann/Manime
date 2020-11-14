@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.masscode.manime.views.adapter.RecyclerViewGridAdapter
 import com.masscode.manime.databinding.FragmentMoreBinding
-import com.masscode.manime.viewmodel.ViewModelFactory
+import com.masscode.manime.utils.gone
+import com.masscode.manime.utils.visible
+import com.masscode.manime.views.adapter.RecyclerViewGridAdapter
+import com.masscode.manime.views.base.viewmodel.ViewModelFactory
 
 class MoreFragment : Fragment() {
 
@@ -30,14 +32,14 @@ class MoreFragment : Fragment() {
         val viewModelFactory = ViewModelFactory.getInstance(requireContext())
         viewModel = ViewModelProvider(this, viewModelFactory)[MoreViewModel::class.java]
         val adapterAiring = RecyclerViewGridAdapter { id -> showDetail(id) }
-        val type = MoreFragmentArgs.fromBundle(requireArguments()).type
+        val data = MoreFragmentArgs.fromBundle(requireArguments()).type
 
-        viewModel.setType(type)
-        binding.loading.visibility = View.VISIBLE
+        viewModel.setType(data.type)
+        binding.loading.visible()
         viewModel.animeAiring.observe(viewLifecycleOwner, { anime ->
             if (anime != null) {
                 adapterAiring.setData(anime)
-                binding.loading.visibility = View.GONE
+                binding.loading.gone()
             }
         })
 

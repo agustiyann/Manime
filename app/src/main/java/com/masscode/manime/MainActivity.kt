@@ -14,20 +14,26 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var navCtrl: NavController
+    private lateinit var navController: NavController
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         setSupportActionBar(main_toolbar)
         main_toolbar.setTitleTextAppearance(this, R.style.ElectroHarmonixFont)
-        navCtrl = this.findNavController(R.id.nav_host_fragment)
-        NavigationUI.setupActionBarWithNavController(this, navCtrl, drawer_layout)
-        NavigationUI.setupWithNavController(nav_view, navCtrl)
+
+        init()
+    }
+
+    private fun init(){
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        navController = this.findNavController(R.id.nav_host_fragment)
+        NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
+        NavigationUI.setupWithNavController(nav_view, navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return NavigationUI.navigateUp(navCtrl, drawer_layout)
+        return NavigationUI.navigateUp(navController, drawer_layout)
     }
 }

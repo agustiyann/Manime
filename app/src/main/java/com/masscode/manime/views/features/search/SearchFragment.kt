@@ -9,8 +9,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.masscode.manime.R
 import com.masscode.manime.databinding.FragmentSearchBinding
-import com.masscode.manime.viewmodel.ViewModelFactory
+import com.masscode.manime.utils.gone
+import com.masscode.manime.utils.visible
 import com.masscode.manime.views.adapter.RecyclerViewGridAdapter
+import com.masscode.manime.views.base.viewmodel.ViewModelFactory
 
 class SearchFragment : Fragment() {
 
@@ -47,16 +49,16 @@ class SearchFragment : Fragment() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             @SuppressLint("SetTextI18n")
             override fun onQueryTextSubmit(query: String?): Boolean {
-                binding.loading.visibility = View.VISIBLE
-                binding.welcomeView.visibility = View.GONE
+                binding.loading.visible()
+                binding.welcomeView.gone()
                 if (query != null) {
                     viewModel.setResult(query)
                     viewModel.animeResult.observe(viewLifecycleOwner, { anime ->
                         if (anime.isNotEmpty()) {
                             adapterResult.setData(anime)
-                            binding.loading.visibility = View.GONE
+                            binding.loading.gone()
                         } else {
-                            binding.welcomeView.visibility = View.VISIBLE
+                            binding.welcomeView.visible()
                             binding.textOnSearch.text =
                                 "Ups, no anime found! Try to type another name :)"
                         }
