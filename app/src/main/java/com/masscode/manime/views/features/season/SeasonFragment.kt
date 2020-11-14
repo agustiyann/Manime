@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.masscode.manime.R
 import com.masscode.manime.databinding.FragmentSeasonBinding
+import com.masscode.manime.utils.enum.Season
 import com.masscode.manime.utils.gone
 import com.masscode.manime.utils.visible
 import com.masscode.manime.views.adapter.RecyclerViewGridAdapter
@@ -50,8 +51,8 @@ class SeasonFragment : Fragment() {
         inflater.inflate(R.menu.season_menu, menu)
         binding.loading.visible()
 
-        viewModel.setSeason(thisYear, "spring")
-        setTitleSeason("spring")
+        viewModel.setSeason(thisYear, Season.SPRING.value.toLowerCase())
+        setTitleSeason(Season.SPRING)
         viewModel.animeSeason.observe(viewLifecycleOwner, { anime ->
             if (anime.isNotEmpty()) {
                 adapterSeason.setData(anime)
@@ -66,24 +67,17 @@ class SeasonFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_spring -> {
-                refreshList("spring")
-            }
-            R.id.menu_summer -> {
-                refreshList("summer")
-            }
-            R.id.menu_fall -> {
-                refreshList("fall")
-            }
-            R.id.menu_winter -> {
-                refreshList("winter")
-            }
+            R.id.menu_spring -> refreshList(Season.SPRING)
+            R.id.menu_summer -> refreshList(Season.SUMMER)
+            R.id.menu_fall -> refreshList(Season.FALL)
+            R.id.menu_winter -> refreshList(Season.WINTER)
         }
+
         return super.onOptionsItemSelected(item)
     }
 
-    private fun refreshList(season: String) {
-        viewModel.setSeason(thisYear, season)
+    private fun refreshList(season: Season) {
+        viewModel.setSeason(thisYear, season.value.toLowerCase())
         setTitleSeason(season)
         viewModel.animeSeason.observe(viewLifecycleOwner, { anime ->
             if (anime.isNotEmpty()) {
@@ -92,24 +86,24 @@ class SeasonFragment : Fragment() {
         })
     }
 
-    private fun setTitleSeason(season: String) {
+    private fun setTitleSeason(season: Season) {
         val icon: String
         when (season) {
-            "spring" -> {
+            Season.SPRING -> {
                 icon = String(Character.toChars(0x1F331))
-                (activity as AppCompatActivity).supportActionBar?.title = "Spring$icon ~ $thisYear"
+                (activity as AppCompatActivity).supportActionBar?.title = "${Season.SPRING.value}$icon ~ $thisYear"
             }
-            "summer" -> {
+            Season.SUMMER -> {
                 icon = String(Character.toChars(0x1F31E))
-                (activity as AppCompatActivity).supportActionBar?.title = "Summer$icon ~ $thisYear"
+                (activity as AppCompatActivity).supportActionBar?.title = "${Season.SUMMER.value}$icon ~ $thisYear"
             }
-            "fall" -> {
+            Season.FALL -> {
                 icon = String(Character.toChars(0x1F342))
-                (activity as AppCompatActivity).supportActionBar?.title = "Fall$icon ~ $thisYear"
+                (activity as AppCompatActivity).supportActionBar?.title = "${Season.FALL.value}$icon ~ $thisYear"
             }
-            "winter" -> {
+            Season.WINTER -> {
                 icon = String(Character.toChars(0x2744))
-                (activity as AppCompatActivity).supportActionBar?.title = "Winter$icon ~ $thisYear"
+                (activity as AppCompatActivity).supportActionBar?.title = "${Season.WINTER.value}$icon ~ $thisYear"
             }
         }
     }
