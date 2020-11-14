@@ -46,6 +46,9 @@ All data is taken from [Jikan API](https://jikan.moe), for documentation can be 
 - [Lottie](https://lottiefiles.com/) - displays animation in JSON format.
 - [Shimmer](https://facebook.github.io/shimmer-android/) - create a shimmer effect on the application.
 
+## Download
+Go to the [Releases](https://github.com/agustiyann/Manime/releases) to download the latest APK.
+
 ## Contribute
 If you want to contribute to this repository, you're always welcome!
 
