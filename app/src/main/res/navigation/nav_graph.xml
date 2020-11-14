@@ -32,7 +32,7 @@
         tools:layout="@layout/fragment_more">
         <argument
             android:name="type"
-            app:argType="string" />
+            app:argType="com.masscode.manime.utils.enum.More" />
         <action
             android:id="@+id/action_moreFragment_to_detailAnimeFragment"
             app:destination="@id/detailAnimeFragment"
