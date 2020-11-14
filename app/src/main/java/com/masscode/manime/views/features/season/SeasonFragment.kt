@@ -7,8 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.masscode.manime.R
+import com.masscode.manime.app.ui.views.features.season.SeasonFragmentDirections
 import com.masscode.manime.databinding.FragmentSeasonBinding
-import com.masscode.manime.viewmodel.ViewModelFactory
+import com.masscode.manime.utils.gone
+import com.masscode.manime.utils.visible
+import com.masscode.manime.views.base.viewmodel.ViewModelFactory
 import com.masscode.manime.views.adapter.RecyclerViewGridAdapter
 import java.util.*
 
@@ -46,14 +49,14 @@ class SeasonFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.season_menu, menu)
-        binding.loading.visibility = View.VISIBLE
+        binding.loading.visible()
 
         viewModel.setSeason(thisYear, "spring")
         setTitleSeason("spring")
         viewModel.animeSeason.observe(viewLifecycleOwner, { anime ->
             if (anime.isNotEmpty()) {
                 adapterSeason.setData(anime)
-                binding.loading.visibility = View.GONE
+                binding.loading.gone()
             }
         })
         with(binding.rvAnimeSeason) {

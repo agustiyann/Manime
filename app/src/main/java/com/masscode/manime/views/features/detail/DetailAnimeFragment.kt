@@ -10,18 +10,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.masscode.manime.R
+import com.masscode.manime.app.ui.views.features.detail.DetailAnimeFragmentArgs
 import com.masscode.manime.data.source.remote.response.detail.CharactersListResponse
 import com.masscode.manime.databinding.CharacterDialogBinding
 import com.masscode.manime.databinding.FragmentDetailAnimeBinding
-import com.masscode.manime.viewmodel.ViewModelFactory
+import com.masscode.manime.utils.appToast
 import com.masscode.manime.views.adapter.CharacterAdapter
 import com.masscode.manime.views.adapter.VideoAdapter
 import com.masscode.manime.views.adapter.VoiceActorAdapter
+import com.masscode.manime.views.base.viewmodel.ViewModelFactory
 
 class DetailAnimeFragment : Fragment() {
 
@@ -123,7 +124,7 @@ class DetailAnimeFragment : Fragment() {
         try {
             startActivity(intent)
         } catch (t: Throwable) {
-            Toast.makeText(requireContext(), "Ups, slowly!", Toast.LENGTH_SHORT).show()
+            appToast("Ups, slowly!")
         }
     }
 }

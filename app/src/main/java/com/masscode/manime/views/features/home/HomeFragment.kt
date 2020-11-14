@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.masscode.manime.app.ui.views.features.home.HomeFragmentDirections
 import com.masscode.manime.databinding.FragmentHomeBinding
-import com.masscode.manime.viewmodel.ViewModelFactory
+import com.masscode.manime.utils.gone
+import com.masscode.manime.utils.visible
+import com.masscode.manime.views.base.viewmodel.ViewModelFactory
 
 class HomeFragment : Fragment() {
 
@@ -34,20 +37,20 @@ class HomeFragment : Fragment() {
 
     private fun setupVisibility() {
         binding.apply {
-            topAiringText.visibility = View.GONE
-            upcomingText.visibility = View.GONE
-            tvText.visibility = View.GONE
-            movieText.visibility = View.GONE
+            topAiringText.gone()
+            upcomingText.gone()
+            tvText.gone()
+            movieText.gone()
 
-            moreAiring.visibility = View.GONE
-            moreUpcoming.visibility = View.GONE
-            moreTv.visibility = View.GONE
-            moreMovie.visibility = View.GONE
+            moreAiring.gone()
+            moreUpcoming.gone()
+            moreTv.gone()
+            moreMovie.gone()
 
-            progressViewAiring.visibility = View.VISIBLE
-            progressViewUpcoming.visibility = View.VISIBLE
-            progressViewTv.visibility = View.VISIBLE
-            progressViewMovie.visibility = View.VISIBLE
+            progressViewAiring.visible()
+            progressViewUpcoming.visible()
+            progressViewTv.visible()
+            progressViewMovie.visible()
         }
     }
 
@@ -62,9 +65,9 @@ class HomeFragment : Fragment() {
                 if (anime.isNotEmpty()) {
                     adapterAiring.setData(anime)
                     binding.apply {
-                        progressViewAiring.visibility = View.GONE
-                        topAiringText.visibility = View.VISIBLE
-                        moreAiring.visibility = View.VISIBLE
+                        progressViewAiring.gone()
+                        topAiringText.visible()
+                        moreAiring.visible()
                     }
                 }
             })
@@ -72,9 +75,9 @@ class HomeFragment : Fragment() {
                 if (anime.isNotEmpty()) {
                     adapterUpcoming.setData(anime)
                     binding.apply {
-                        progressViewUpcoming.visibility = View.GONE
-                        upcomingText.visibility = View.VISIBLE
-                        moreUpcoming.visibility = View.VISIBLE
+                        progressViewUpcoming.gone()
+                        upcomingText.visible()
+                        moreUpcoming.visible()
                     }
                 }
             })
@@ -82,9 +85,9 @@ class HomeFragment : Fragment() {
                 if (anime.isNotEmpty()) {
                     adapterTV.setData(anime)
                     binding.apply {
-                        progressViewTv.visibility = View.GONE
-                        tvText.visibility = View.VISIBLE
-                        moreTv.visibility = View.VISIBLE
+                        progressViewTv.gone()
+                        tvText.visible()
+                        moreTv.visible()
                     }
                 }
             })
@@ -92,9 +95,9 @@ class HomeFragment : Fragment() {
                 if (anime.isNotEmpty()) {
                     adapterMovie.setData(anime)
                     binding.apply {
-                        progressViewMovie.visibility = View.GONE
-                        movieText.visibility = View.VISIBLE
-                        moreMovie.visibility = View.VISIBLE
+                        progressViewMovie.gone()
+                        movieText.visible()
+                        moreMovie.visible()
                     }
                 }
             })
