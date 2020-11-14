@@ -1,4 +1,4 @@
-package com.masscode.manime.viewmodel
+package com.masscode.manime.views.base.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
