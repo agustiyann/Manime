@@ -19,15 +19,13 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setSupportActionBar(main_toolbar)
-        main_toolbar.setTitleTextAppearance(this, R.style.ElectroHarmonixFont)
-
         init()
     }
 
     private fun init(){
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
+        setSupportActionBar(main_toolbar)
+        main_toolbar.setTitleTextAppearance(this, R.style.ElectroHarmonixFont)
         navController = this.findNavController(R.id.nav_host_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
         NavigationUI.setupWithNavController(nav_view, navController)
