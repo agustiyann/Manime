@@ -26,6 +26,10 @@ class HomeViewModel(private val repository: Repository) : ViewModel() {
     val animeMovie: LiveData<List<AnimeListResponse>>
         get() = _animeMovie
 
+    private var _animeOva = MutableLiveData<List<AnimeListResponse>>()
+    val animeOva: LiveData<List<AnimeListResponse>>
+        get() = _animeOva
+
     init {
         viewModelScope.launch {
             try {
@@ -40,6 +44,9 @@ class HomeViewModel(private val repository: Repository) : ViewModel() {
 
                 val resultMovie = repository.getTopAnime("movie")
                 _animeMovie.value = resultMovie
+
+                val resultOva = repository.getTopAnime("ova")
+                _animeOva.value = resultOva
             } catch (e: Throwable) {
                 e.printStackTrace()
             }

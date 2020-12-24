@@ -4,5 +4,6 @@ enum class More (val type: String){
     AIRING("airing"),
     UPCOMING("upcoming"),
     TV("tv"),
-    MOVIE("movie")
+    MOVIE("movie"),
+    OVA("ova")
 }

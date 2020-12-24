@@ -21,7 +21,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -41,11 +41,13 @@ class HomeFragment : Fragment() {
             upcomingText.gone()
             tvText.gone()
             movieText.gone()
+            ovaText.gone()
 
             moreAiring.gone()
             moreUpcoming.gone()
             moreTv.gone()
             moreMovie.gone()
+            moreOva.gone()
 
             progressViewAiring.visible()
             progressViewUpcoming.visible()
@@ -59,6 +61,7 @@ class HomeFragment : Fragment() {
         val adapterUpcoming = HomeAdapter { id -> showDetail(id) }
         val adapterTV = HomeAdapter { id -> showDetail(id) }
         val adapterMovie = HomeAdapter { id -> showDetail(id) }
+        val adapterOva = HomeAdapter { id -> showDetail(id) }
 
         viewModel.apply {
             animeAiring.observe(viewLifecycleOwner, { anime ->
@@ -101,6 +104,13 @@ class HomeFragment : Fragment() {
                     }
                 }
             })
+            animeOva.observe(viewLifecycleOwner, { anime ->
+                adapterOva.setData(anime)
+                binding.apply {
+                    ovaText.visible()
+                    moreOva.visible()
+                }
+            })
         }
 
         binding.apply {
@@ -120,10 +130,15 @@ class HomeFragment : Fragment() {
                 setHasFixedSize(true)
                 adapter = adapterMovie
             }
+            rvTopOva.apply {
+                setHasFixedSize(true)
+                adapter = adapterOva
+            }
             moreAiring.setOnClickListener { showMore(More.AIRING) }
             moreUpcoming.setOnClickListener { showMore(More.UPCOMING) }
             moreTv.setOnClickListener { showMore(More.TV) }
             moreMovie.setOnClickListener { showMore(More.MOVIE) }
+            moreOva.setOnClickListener { showMore(More.OVA) }
         }
     }
 
